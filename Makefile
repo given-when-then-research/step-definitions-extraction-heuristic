@@ -19,12 +19,12 @@ all: run-exploration run-exploitation
 # Executa apenas a heurística exploration
 .PHONY: run-exploration
 run-exploration:
-	$(PYTHON) -B $(SCRIPT_EXPLORATION) --clone-dir $(CLONE_DIR) --data-file $(DATA_FILE) --output $(OUTPUT_EXPLORATION)
+	$(PYTHON) -B $(SCRIPT_EXPLORATION) --clone-dir $(CLONE_DIR) --data-file $(DATA_FILE) --output $(OUTPUT_EXPLORATION) --filter-confidence --enrich-contents --filter-metric mean
 
 # Executa apenas a heurística exploitation
 .PHONY: run-exploitation
 run-exploitation:
-	$(PYTHON) -B $(SCRIPT_EXPLOITATION) --clone-dir $(CLONE_DIR) --data-file $(DATA_FILE) --output $(OUTPUT_EXPLOITATION)
+	$(PYTHON) -B $(SCRIPT_EXPLOITATION) --clone-dir $(CLONE_DIR) --data-file $(DATA_FILE) --output $(OUTPUT_EXPLOITATION) --filter-perfect-only --filter-max-confidence --enrich-contents --simplify-output
 
 # Limpa resultados gerados por ambas as heurísticas
 .PHONY: clean
